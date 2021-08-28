@@ -1,0 +1,43 @@
+
+[
+	{
+		"index": "1",
+		"locate": "서울/인천(ICN)",
+		"link": "#"
+	},
+	{
+		"index": "2",
+		"locate": "서울/김포(GMP)",
+		"link": "#"
+	},
+	{
+		"index": "3",
+		"locate": "부산(PUS)",
+		"link": "#"
+	},
+	{
+		"index": "4",
+		"locate": "제주(CJU)",
+		"link": "#"
+	},
+	{
+		"index": "5",
+		"locate": "청주(CJJ)",
+		"link": "#"
+	},
+	{
+		"index": "6",
+		"locate": "광주(KWJ)",
+		"link": "#"
+	},
+	{
+		"index": "7",
+		"locate": "여수(RSU)",
+		"link": "#"
+	},
+	{
+		"index": "8",
+		"locate": "울산(USN)",
+		"link": "#"
+	}
+]

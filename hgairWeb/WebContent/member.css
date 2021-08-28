@@ -1,0 +1,153 @@
+@charset "UTF-8";
+@midia screen and (min-width: 768px ) and (max-width: 1024px ){ body {
+}
+
+}
+@import
+	url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
+
+* {
+	font-family: 'Gaegu', cursive;
+}
+
+#container div, a, img, ul, li {
+	display: inline-block; /* 가로 정렬 */
+	text-decoration: none; /* a태그 언더바 없애기 */
+	list-style: none;
+}
+
+#member, ul {
+	display: inline; /*가로 정렬*/
+}
+
+#m1 button { /* 1~5번 버튼 사이즈 통일 */
+	border: 2px solid purple;
+	background-color: purple;
+	font-weight: 40px;
+	font-size: 22px;
+	color: white;
+	text-align: center;
+}
+
+#m2 button {
+	border: 2px solid skyblue;
+	background-color: skyblue;
+	font-weight: 40px;
+	font-size: 22px;
+	color: white;
+	text-align: center;
+}
+
+#m3 button {
+	border: 2px solid green;
+	background-color: green;
+	font-weight: 40px;
+	font-size: 22px;
+	color: white;
+	text-align: center;
+}
+
+#m4 button {
+	border: 2px solid lightgreen;
+	background-color: lightgreen;
+	font-weight: 40px;
+	font-size: 22px;
+	color: white;
+	text-align: center;
+}
+
+#m5 button {
+	border: 2px solid khaki;
+	background-color: khaki;
+	font-weight: 40px;
+	font-size: 22px;
+	color: white;
+	text-align: center;
+}
+
+#logo img { /*메인페이지 이동 로고 사이즈*/
+	width: 70px;
+	height: 40px;
+}
+
+#logo { /*메인로고 폰트사이즈*/
+	font-size: 30px;
+}
+
+.photo { /* mbti 캐릭터 사이즈 통일 */
+	width: 200px;
+	height: 220px;
+	margin: 25px;
+	padding: 10px;
+}
+
+
+
+#box1 { 
+	border: 2px solid purple;
+	margin: 20px;
+	padding: 15px;
+	width: 300px;
+	height: 300px;
+	display: none; /*박스를 처음에 안보여줌 -> 버튼 누르면 나타나게 해줌*/
+}
+
+#box2 {
+	border: 2px solid skyblue;
+	margin: 20px;
+	padding: 15px;
+	width: 300px;
+	height: 330px;
+	display: none;
+}
+
+#box3 {
+	border: 2px solid green;
+	margin: 20px;
+	padding: 15px;
+	width: 300px;
+	height: 340px;
+	display: none;
+}
+
+#box4 {
+	border: 2px solid lightgreen;
+	margin: 20px;
+	padding: 15px;
+	width: 300px;
+	height: 300px;
+	display: none;
+}
+
+#box5 {
+	border: 2px solid khaki;
+	margin: 20px;
+	padding: 15px;
+	width: 300px;
+	height: 340px;
+	display: none;
+}
+
+.btnAll img { /*버튼을 누르면 모든 박스가 열리는  버튼 하나 만들어줬음*/
+	width: 50px;
+	height: 25px;
+	background-color: lightblue;
+}
+
+#container {
+	margin: 3%;
+}
+
+.mbti {
+	text-align: center; 
+	margin-top: 20px;
+}
+.photo {
+	animation: motion 0.5s linear 0s infinite alternate; 
+	margin-top: 0;
+}
+        
+@keyframes motion {
+	0% {margin-top: 0px;}
+	100% {margin-top: 10px;}
+}

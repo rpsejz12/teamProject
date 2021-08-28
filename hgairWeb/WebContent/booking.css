@@ -1,0 +1,133 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap')
+	;
+
+* {
+	font-family: 'Jua', sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+
+@media ( min-width :768px) and (max-width:1024px) {		/* 메뉴의 크기 */
+	.member, .departure, .arrival, .departDate, .arrivalDate {
+		width: 50%;
+		margin-left: 25%;
+		float: left;
+	}
+}
+
+@media ( min-width :1025px) {							/* 메뉴의 크기 */
+	.member, .departure, .arrival, .departDate, .arrivalDate {
+		width: 25%;
+		height: 200px;
+		margin-left: 10%;
+		margin-top: 20px;
+		float: left;
+		margin-left: 5%;
+	}
+}
+
+li {
+	text-align: left;
+	display: none;
+	width: 100%;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
+	border-bottom: 1px solid black;
+}
+
+ul {
+	
+}
+
+.on {
+	display: block;
+}
+
+#container {
+	text-align: center;
+}
+
+#logo {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	margin-left: -150px;
+	height: 200px;
+	width: 300px;
+	text-align: center;
+	vertical-align: bottom;
+	background-image: url("image/airplane.jpg");
+	background-size: cover;
+}
+
+#title {
+	margin-left: 5%;
+	width: 100%;
+	position: absolute;
+	top: 220px;
+}
+
+hr {
+	margin-top: 10px;
+	width: 90%;
+	height: 2px;
+	background-color: darkblue;
+}
+
+.info { /* 수직 가운대 정렬을 위해 display flex를 사용 */
+	display: flex;
+	justify-content: center;		/* flex일때 수평정렬 */
+	align-items: center;			/* flex일때 수직정렬 */
+	border-radius: 3%;				/* 테두리의 둥근정도*/
+	position: absolute;
+	margin-left: 5%;
+	top: 320px;
+	border: 2px solid black;
+	height: 100px;
+	width: 90%;
+	position: absolute;
+}
+
+.infotext {
+	font-size: 18px;
+}
+
+.type {
+	margin-left: 40%;
+	position: absolute;
+	top: 430px;
+	height: 20px;
+	width: 20%;
+	position: absolute;
+	display: block;
+}
+
+.plus>img, .minus>img {
+	height: 20px;
+	width: 20px;
+}
+
+.num {
+	font-size: 20px;
+}
+
+.content {
+	vertical-align: middle;
+	margin-left: 15%;
+	position: absolute;
+	margin-top: 470px;
+	height: 100px;
+	width: 70%;
+}
+
+.menu1, .menu2, .menu3, .menu4, .menu5 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40px;
+	border-radius: 5%;
+	width: 100%;
+	border: 2px solid black;
+	line-height: 20px;
+}

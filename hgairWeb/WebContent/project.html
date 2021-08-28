@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>프로젝트 소개</title>
+<link rel="stylesheet"
+	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="jquery-3.6.0.min.js"></script>
+<style type="text/css">
+@import
+url("project.css")
+</style>
+
+</head>
+<body>
+	<div id="header">
+		<!-- 메인페이지이동 -->
+		<a href="main.html" id="logo"><img alt="HG_AIR_LOGO" src="image/plane.png"></a>
+		<p id="brand">HG_AIR</p>
+	</div>
+	<br>
+	<div id="container">
+		<div id="teamName">
+			<!-- 마우스아웃색상변경 -->
+			<h1 id="typeA" onmouseout="onOut(this.id);">
+				Java를 Job아줘!!<br>(↑마우스야 지나가줘↓)
+			</h1>
+			<!-- 마우스아웃색상변경 -->
+			<p id="explain" onmouseout="onOut(this.id);">
+				Java도 잡고 Job도 잡고<br>성공적인 과정 완주를 위한 집단지성!
+			</p>
+		</div>
+		<div class="tab_menu">
+			<h2 class="smallName">
+				프로젝트 의의<br>(DuDuDunGa)
+			</h2>
+			<div class="mean">
+				<p id="typeB">
+					<!-- 기다리면 글자 표시 -->
+					온라인 예약 수요 증가로 인한 항공사들의 온라인 예매 프로그램의 수요로 기획되었다.<br> 현재, 코로나로 인한
+					저가 항공사들의 폐업 이후 신설 항공사가 등장하게 될 것으로 예측된다.<br> 온라인 예매 프로그램의 수요는
+					더욱 증가될것으로 예상된다.<br>
+			</div>
+			<h2 class="smallName">지난 프로젝트</h2>
+			<br>
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<!-- 이미지 스왑 -->
+					<div class="swiper-slide">
+						<img src="image/flow.PNG" alt="유저플로우">
+					</div>
+					<div class="swiper-slide">
+						<img src="image/user.PNG" alt="테이블">
+					</div>
+
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script type="text/javascript">
+	
+		var swiper = new Swiper('.swiper-container', { // 지난프로젝트 자동 슬라이드
+			pagination : {
+				el : '.swiper-pagination'
+			},
+			loop : true, // 무한루프
+			autoplay : {
+				delay : 1000
+			},
+			speed : 2000
+		}); 
+
+		var timer;
+		var my_id;
+
+		function onOut(this_id) { // 마우스 아웃
+			my_id = this_id
+			timer = setInterval(change_typeA, 1750); //
+			timer = setInterval(change_typeB, 2000); //
+		} 
+		function change_typeA() { // typeA 색상변경
+			var text = document.getElementById(my_id);
+			var r = Math.round(Math.random() * 255); 
+			var g = Math.round(Math.random() * 255);
+			var b = Math.round(Math.random() * 255);
+			// rgb값 랜덤 생성
+			var random_color = "rgb(" + r + "," + g + "," + b + ")"; //rgb값 랜덤 조합
+
+			text.style.color = random_color; // 글자색 변경
+		} // 마우스올리면 요란하다
+		function change_typeB() { // typeB 색상변경
+			var change = document.getElementById("typeB");
+			change.style.color = "#084B8A";
+		} 
+	</script>
+</body>
+</html>

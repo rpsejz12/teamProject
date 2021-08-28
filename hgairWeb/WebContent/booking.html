@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HGair</title>
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel=" shortcut icon" href="image/airplane_icon.ico">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- 제이쿼리가 겹쳐서 데이트피커가 실행안됨 -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="booking.js"></script>
+<script src="locate.js"></script>
+<script>
+	$(function() {
+		$('#datepicker1').datepicker('setDate', 'today');
+		$('#datepicker2').datepicker('setDate', 'today');
+	});
+</script>
+
+<style>
+@import url("booking.css");
+</style>
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<div id="logo"></div>
+			<div id="title">
+				<h1>예약</h1>
+				<hr>
+			</div>
+		</header>
+		<div id="container">
+			<div class="info">
+				<p class="infotext">
+					<!-- 예약정보 출력 -->
+					[성인 : <span id="ninfo1">1</span>명, 미성년 : <span id="ninfo2">0</span>명]
+					[출발지 : <span id="dinfo">서울/인천(ICN)</span>] [도착지 : <span id="ainfo">서울/인천(ICN)</span>]
+					[가는날 : <span id="ddinfo">mm/dd/yyyy</span>] [오는날 : <span
+						id="adinfo">mm/dd/yyyy</span>]
+				</p>
+			</div>
+			<div class="type">
+
+				<input type="radio" name="tripType" value="RT" id="type1" checked>
+				<label for="type1">왕복</label> <input type="radio" name="tripType"
+					value="OW" id="type2"> <label for="type2">편도</label>
+				<!-- 편도선택시 오는날 숨김 -->
+
+
+			</div>
+
+			<div class="content">
+				<div class="member">
+					<div class="menu1">
+						<span>탑승객수</span>
+					</div>
+					<ul class="tnum">
+						<!-- 탑승객수 - + 로 추가 -->
+						<li class="adult"><span>성인 :</span> <a href="#" class="minus"><img
+								alt="minus" src="image/minus.png"></a> <span class="num">1</span>
+							<a href="#" class="plus"><img alt="plus" src="image/plus.png"></a></li>
+						<li class="child"><span>미성년 :</span> <a href="#"
+							class="minus"> <img alt="minus" src="image/minus.png"></a>
+							<span class="num"> 0 </span> <a href="#" class="plus"><img
+								alt="plus" src="image/plus.png"></a></li>
+
+					</ul>
+				</div>
+
+				<div class="departure">
+					<div class="menu2">
+						<span>출발지</span>
+					</div>
+					<!-- json데이터 입력-->
+					<ul class="dloc"></ul>
+				</div>
+
+				<div class="arrival">
+					<div class="menu3">
+						<span>도착지</span>
+					</div>
+					<!-- json데이터 입력 -->
+					<ul class="aloc"></ul>
+				</div>
+
+				<div class="departDate">
+					<div class="menu4">
+						<span>가는날</span>
+					</div>
+					<!-- datepicker 달력 이용 -->
+					<ul class=ddate>
+						<li><input type="text" id="datepicker1"></li>
+					</ul>
+				</div>
+
+				<div class="arrivalDate">
+					<div class="menu5">
+						<span>오는날</span>
+					</div>
+					<!--편도때는 접히고 왕복때는 펴야됨-->
+					<ul class="adate">
+						<!-- datepicker 달력 이용 -->
+						<li><input type="text" id="datepicker2"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<footer> </footer>
+	</div>
+</body>
+</html>

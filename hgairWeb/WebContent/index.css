@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap')
+	;
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background: url("image/bgimg.jpg");
+}
+
+.logo {
+	margin: -100px;
+	position: absolute;
+	margin-top: 100px;
+	width: 200px;
+	height: 200px;
+	transition-duration: 1s;
+}
+
+.logo.on { /*hover 하면 크기를 키움*/
+	margin: -120px;
+	position: absolute;
+	margin-top: 100px;
+	width: 250px;
+	height: 250px;
+}
+
+.content {
+	text-align: center;
+}
+
+.logo_text {
+	margin-top: 100px;
+	text-shadow: 10px 10px black; /*글씨에 그림자 효과*/
+	font-family: 'Fredoka One', cursive;
+	color: lightblue;
+	height: 20%;
+	width: 100%;
+	font-size: 100px;
+	text-align: center;
+}
+
+.logo a hover {
+	
+}

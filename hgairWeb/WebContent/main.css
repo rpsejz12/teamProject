@@ -1,0 +1,275 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+/* font-family: 'Source Code Pro', monospace; */
+@import
+	url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+/* font-family: 'Playfair Display', serif; */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+@media screen and (max-width: 1024px) {
+	
+	#header {
+		margin: 30px 30px 30px 55px;
+	}
+	
+	#header .title {
+		font-family: 'Source Code Pro', monospace;
+		color: navy;
+		text-decoration: none;
+		font-size: 40px;
+		float: left;
+	}
+	
+	.menu { /* 메뉴 항목 감추기 */
+		display:none;
+		list-style: none;
+	}
+	
+	.menuBtn {
+		display: block !important; /* !important: 같은 속성을 여러번 정의한 경우 최우선 적용 */
+		font-family: 'Playfair Display', serif;
+		background-color:transparent; /* 배경 없애기 */
+		border: 0px;
+		outline: 0px;
+		cursor: pointer;
+		float: right;
+		margin-right: 22px;
+		margin-top: 5px;
+	}
+	
+	.menu {
+		float: right;
+		margin-top: 11px;
+	}
+	
+	.menuBtn img {
+		width: 40px;
+		height: 40px;
+		float: right;
+	}
+	
+	#gnb {
+		position: relative;
+	}
+	
+	#gnb li {
+		margin: 0 20px;
+		display: inline;
+	}
+	
+	#gnb li a {
+		text-align: center;
+		font-family: 'Playfair Display', serif;
+		text-decoration: none;
+		color: red;
+		font-size: 20px;
+		
+		display: inline-block;
+		/* transition: 속성을 서서히 변화시키는 속성
+		-webkit-transition: 0.5s; 구글, 사파리 브라우저 적용
+		-moz-transition: 0.5s; 파이어폭스 브라우저 적용
+		-o-transition: 0.5s; 익스플로러 적용
+		-ms-transition: 0.5s; 오페라 브라우저 적용 */
+		transition: 0.5s; /* 객체가 변하는 시간 0.5초 */
+	}
+	
+	h4 {
+		color: #464646;
+		margin: 5px;
+		padding: 5px;
+	}
+	
+	footer div {
+		max-width: 90%;
+		margin: 0 auto;
+	}
+	
+	footer ul li {
+		list-style: none;
+	}
+	
+	footer li a {
+		text-decoration: none;
+		color: gray;
+		margin: 5px;
+		padding: 5px;
+	}
+	
+	.quickMenu {
+		float: left;
+		margin-bottom: 100%;
+		width: 32%;
+	}
+	
+	footer .content {
+		margin-top: 3px;
+		padding: 5px;
+		color: #464646;
+	}
+
+}
+	
+@media screen and (min-width: 1025px) {
+	
+	#header {
+		text-align: center;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		padding: 10px;
+	}
+	
+	#header .title {
+		font-family: 'Source Code Pro', monospace;
+		color: navy;
+		text-decoration: none;
+		font-size: 55px;
+		text-align: center;
+	}
+
+	.menuBtn {
+		display: none !important;
+	}
+	
+	.menu {
+		display: block !important;
+		list-style: none;
+		padding: 30px 0 10px 0;
+	}
+	
+	#gnb li {
+		margin: 0 24px;
+		display: inline
+	}
+	
+	#gnb li a {
+		text-align: center;
+		font-family: 'Playfair Display', serif;
+		text-decoration: none;
+		color: red;
+		font-size: 38px;
+		
+		display: inline-block;
+		/* -webkit-transition: 0.5s;
+		-moz-transition: 0.5s;
+		-o-transition: 0.5s;
+		-ms-transition: 0.5s; */
+		transition: 0.5s;
+	}
+	
+	footer .head {
+		max-width: 1120px;
+		margin: 0 auto; /* 상하 여백없이 중앙 정렬 */
+		margin-bottom: 20px;
+	}
+	
+	footer .content {
+		max-width: 1120px;
+		margin: 0 auto; /* 상하 여백없이 중앙 정렬 */
+	}
+	
+	h4 {
+		color: #464646;
+		margin: 5px;
+		padding: 5px;
+	}
+	
+	footer ul li {
+		display: inline;
+		list-style: none;
+	}
+	
+	footer li a {
+		text-decoration: none;
+		color: gray;
+		margin: 5px;
+		padding: 5px;
+	}
+	
+	footer .content ul span {
+		margin: 5px;
+		padding: 5px;
+		color: #464646;
+	}
+	
+	.copy {
+		color: #464646;
+		margin: 5px 10px;
+		margin-left: 10px;
+		margin-bottom: 5px;
+	}
+	
+	footer .quickMenu li:before { /* footer quickMenu li 항목 사이에 | 삽입 */
+		content: "";
+		display: inline-block;
+		margin: 0 1px 0 0;
+		width: 1px;
+		height: 12px;
+		background-color: gray;
+	}
+	
+	footer .quickMenu li:first-child:before { /* 첫번째 항목에는 적용하지 않음 */
+		content: none;
+	}
+	
+	footer .info li:before { /* footer info li 항목 사이에 | 삽입 */
+		content: "";
+		display: inline-block;
+		margin: 0 0 0 1px;
+		width: 1px;
+		height: 12px;
+		background-color: gray;
+	}
+	
+	footer .info li:first-child:before { /* 첫번째 항목에는 적용하지 않음 */
+		content: none;
+	}
+}
+
+
+body {
+	background-color: white;
+	width: 100%;
+	overflow-x: hidden; /* 하단 스크롤 감추기 */
+	overflow-y: auto; /* overflow 시 스크롤바 자동 생성 */
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 100%;
+}
+
+.container:after {
+	display: block;
+	content: "";
+	clear: both;
+}
+
+#gnb li a:hover { /* 마우스오버 시 text 크기 변화 */
+	/* -webkit-transform: scale(1.15);
+	-moz-transform: scale(1.15);
+	-o-transform: scale(1.15);
+	-ms-transform: scale(1.15); */
+	
+	transform: scale(1.15); /* scale(1.15) : 높이,너비를 1.15배로 확대*/
+}
+	
+.visual {
+	padding: 0 50px 50px 50px;
+	/* min-height: calc( 100vh - 350px ); */
+}
+
+footer {
+	background-color: #EBFBFF;
+	width: 100%;
+	position: absolute;
+	height: 210px;
+}
+
+
+

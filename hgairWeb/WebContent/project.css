@@ -1,0 +1,105 @@
+@charset "UTF-8";
+@import
+	url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+	/*한글*/
+@import
+	url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap')
+	; /*영어*/
+#typeA, #explain, .smallName, #typeB, #footer{
+	font-family: 'Hi Melody', cursive;
+}
+
+#brand {
+	font-family: 'Amatic SC', cursive;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	witdh: 100%;
+	height: 120px;
+}
+
+img {
+	margin-top: 50px;
+	margin-left: 10%;
+	width: 300px;
+	height: 250px;
+	float: left;
+}
+
+#brand {
+	position: absolute;
+	margin-top: 100px;
+	margin-left: 45%;
+	text-align: center;
+	font-size: 100px;
+	color: #2E64FE;
+}
+
+#container {
+	clear: left;
+	margin: 10px;
+	height: 500px;
+}
+
+#teamName {
+	margin-left: 0;
+}
+
+#typeA {
+	text-align: center;
+}
+
+#explain {
+	text-align: center;
+	margin-top: 50px;
+	margin-left: 40%;
+	width: 20%;
+	font-size: 20px;
+}
+
+.tab_menu {
+	clear: left;
+	border: 3px solid #81BEF7;
+	margin: 30px;
+}
+
+.smallName {
+	margin-top: 50px;
+	margin-left: 35%;
+	width: 30%;
+	color: #2E64FE;
+	text-align: center;
+}
+
+.mean {
+	margin-left: 30%;
+	padding-top: 30px;
+	font-size: 20px;
+	
+}
+
+.mean h2 {
+	margin-left: 700px;
+}
+
+#typeB {
+	color: white;
+	width: 60%;
+	heigth: 30%;
+	text-align: center;
+}
+.swiper-wrapper{
+	height: 60%;
+}
+.swiper-wrapper img {
+	border: 3px solid black;
+	margin-left: 20%;
+	margin-right: 10%;
+	width: 50%;
+	height: 800px;
+}
