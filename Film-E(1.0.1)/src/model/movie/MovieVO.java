@@ -7,7 +7,7 @@ public class MovieVO {
 	private String content;			//영화 설명
 	private String mtype;			//영화 장르
 	private String mdate;			//영화 개봉일
-	/*private String path;  이미지 경로 */
+	private String filename;		//영화 이미지
 	
 	
 	public String getMpk() {
@@ -41,9 +41,16 @@ public class MovieVO {
 		this.mdate = mdate;
 	}
 	
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	
 	@Override
 	public String toString() {
-		return "MovieVO [mpk=" + mpk + ", title=" + title + ", mtype=" + mtype + ", mdate=" + mdate + "]";
+		return "MovieVO [mpk=" + mpk + ", title=" + title + ", mtype=" + mtype + ", mdate=" + mdate + ", filename=" + filename + "]";
 	}
 
 }
