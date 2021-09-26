@@ -3,11 +3,13 @@ package model.review;
 import java.sql.Date;
 
 public class ReviewVO {
+	
 	private int rpk;
 	private String comment;
 	private String id;
 	private String mpk;
 	private Date date;
+	
 	public int getRpk() {
 		return rpk;
 	}

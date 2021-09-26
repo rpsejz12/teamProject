@@ -1,9 +1,11 @@
 package model.client;
 
 public class ClientVO {
+	
 	private String id;
 	private String pw;
 	private String email;
+	
 	public String getId() {
 		return id;
 	}

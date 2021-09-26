@@ -17,7 +17,7 @@ public class ReviewDAO {
 	Connection conn=null;
 	PreparedStatement pstmt=null;
 	
-	public ArrayList<ReviewVO> r_selectDB_all()	{
+	public ArrayList<ReviewVO> r_selectDB_all()	{ // ¸®ºä Á¶È¸
 		
 		conn=JNDI.connect();
 		ArrayList<ReviewVO> datas= new ArrayList<ReviewVO>();

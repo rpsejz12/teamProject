@@ -1,7 +1,9 @@
 package model.common;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -18,7 +20,6 @@ public class JNDI {
 			DataSource ds=(DataSource)envContext.lookup("jdbc/orcl"); 
 			conn=ds.getConnection();
 		}catch(Exception e){
-			System.out.println("connect 오류");
 			e.printStackTrace();
 		}
 		return conn;
@@ -30,7 +31,6 @@ public class JNDI {
 			conn.close();
 		}
 		catch(Exception e){
-			System.out.println("disconnect 오류");
 			e.printStackTrace();
 		}
 	}
