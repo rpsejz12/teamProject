@@ -1,0 +1,24 @@
+ACction
+	SQLExcetion이 추가 되어 있어서 삭제
+
+loginAction
+	관리자 로그인 기능 추가	윤혜님께서 해주셨습니다 감사합니다
+
+
+MovieDAO에 SelectAll 권수님이 수정 했습니다 
+인자로 type,search 받아와서 검색 할 수 있게 수정
+
+AdminAction
+AdminlistAction
+CategoryAction
+M_deleteAction 
+	          >	트랜잭션 사용해서 try catch 사용했습니다
+M_insertAction
+M_updateAction
+MainAction
+
+전부 reqeust로 로직 구현 했습니다
+게시물 삭제, 등록, 수정 기능에 각각 기능이 실패 시 alert창 띄우면서 history.go(-1)하면 어떨까 해서
+주석 달아놨습니다
+오늘 아침에 파일 날라가서,, 늦었습니다ㅜ
+수정해야할 부분 있으면 바로 연락주세여~
