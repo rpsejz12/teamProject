@@ -15,6 +15,7 @@ public class MovieDAO {
 	// 장르를 여러개로 할 경우, 테이블이 하나 더 필요(배열의 역할)
 
 
+	String isHttp = null;
 	String rselectAll = "SELECT * FROM MOVIE WHERE MPK = ? ORDER BY RDATE DESC";				//리뷰 리스트
 	String rdelete = "DELETE FROM REVIEW WHERE MPK = ?";					//리뷰 삭제
 
@@ -40,9 +41,9 @@ public class MovieDAO {
 		datas = new ArrayList<MovieVO>();
 		conn = JNDI.connect();
 		try {
-			
+
 			if(mtype == null || mtype.equals("")) {				
-				
+
 				if(search == null || search.equals("")) {		//type 이 없고 검색이 없을시 전체 리스트 출력
 					pstmt=conn.prepareStatement(selectAll);
 					pstmt.setInt(1, vo.getEnd());
@@ -57,7 +58,7 @@ public class MovieDAO {
 					System.out.println("전체 리스트 검색");
 				}
 			}
-			
+
 			else{												
 				if(search == null || search.equals("")) {		//type이 있을때는 type 장르 리스트만 출력
 					pstmt=conn.prepareStatement(selectAllT);
@@ -74,9 +75,9 @@ public class MovieDAO {
 					pstmt.setInt(4, vo.getStart());
 					System.out.println(mtype+" 리스트 검색");
 				}
-				
+
 			}
-			
+
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				data = new MovieVO();
@@ -85,7 +86,14 @@ public class MovieDAO {
 				data.setContent(rs.getString("content"));
 				data.setMtype(rs.getString("mtype"));
 				data.setMdate(rs.getString("mdate"));
-				data.setFilename(rs.getString("filename"));
+				
+				isHttp = rs.getString("filename");
+				
+				if(!isHttp.substring(0, 4).equals("http")) {		// 처음 4글자가 http가 아니면 앞에 img/추가
+					isHttp = "img/"+isHttp;
+				}
+					
+				data.setFilename(isHttp);
 				datas.add(data);
 			}
 			rs.close();
@@ -110,12 +118,20 @@ public class MovieDAO {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				data = new MovieVO();
+				
 				data.setMpk(rs.getString("mpk"));
 				data.setTitle(rs.getString("title"));
 				data.setContent(rs.getString("content"));
 				data.setMtype(rs.getString("mtype"));
 				data.setMdate(rs.getString("mdate"));
-				data.setFilename(rs.getString("filename"));
+				
+				isHttp = rs.getString("filename");
+				
+				if(!isHttp.substring(0, 4).equals("http")) {		// 처음 4글자가 http가 아니면 앞에 img/추가
+					isHttp = "img/"+isHttp;
+				}
+				
+				data.setFilename(rs.getString(isHttp));
 			}
 			rs.close();
 			System.out.println("MovieDAO 영화 클릭 :" + data);
@@ -130,41 +146,59 @@ public class MovieDAO {
 		return data;	
 	}
 
-	
+
 	public Boolean m_insertDB(MovieVO vo) { 			//영화 등록
 		System.out.println("MovieDAO 영화 등록 VO :" + vo);
 		conn = JNDI.connect();
 		try {
-			
-			
-			
+
+
+
 			pstmt = conn.prepareStatement(mpk);
 			rs = pstmt.executeQuery();
-			
-			String mpkStr = null;	//mpk
+
+			String mpkStr = null;	//	mpk
+			String mpkType = null;	//  'A'1001 앞에 들어갈 영어 
 			int mpkInt = 0;			
 			int cnt = 0;
-			
-			
+
 			while(rs.next()) {
-				mpkStr = rs.getString("mpk").substring(1);		//mpk type 제거후 뒷부분만 가져옴
+				mpkStr = rs.getString("mpk").substring(2);		//mpk type 제거후 뒷부분만 가져옴
 				mpkInt = Integer.parseInt(mpkStr);
 				mpkInt++;
 				cnt++;
 			}
-			
+
 			if(cnt == 0) {				//rs 가 null 일경우
 				mpkInt = 1001;
 			}
+
+			if(vo.getMtype().equals("액션")) {
+				mpkType = "AC";
+			}
+			else if(vo.getMtype().equals("애니메이션")) {
+				mpkType = "AN";
+			}
+			else if(vo.getMtype().equals("멜로/로멘스")) {
+				mpkType = "RO";
+			}
+			else if(vo.getMtype().equals("드라마")) {
+				mpkType = "DR";
+			}
+			else if(vo.getMtype().equals("다큐멘터리")) {
+				mpkType = "DC";
+			}
+			else {	//기타 장르
+				mpkType = "EX";
+			}
 			
-			
-			mpkStr = ""+vo.getMtype().charAt(0) + mpkInt;
-	
-			
+			mpkStr = mpkType + mpkInt;
+
+
 			System.out.println("mpk :" + mpkStr);
-		
+
 			pstmt=conn.prepareStatement(insert);
-			
+
 			pstmt.setString(1, mpkStr);
 			pstmt.setString(2, vo.getTitle());
 			pstmt.setString(3, vo.getContent());

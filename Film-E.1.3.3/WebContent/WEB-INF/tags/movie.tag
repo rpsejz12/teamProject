@@ -19,8 +19,8 @@
          <input type="text" name="content" placeholder="content">
       </div>
       <select name="mtype">
-            <option selected value="ACTION">Action</option>
-            <option value="ANIMATION">Animation</option>
+            <option selected value="액션">Action</option>
+            <option value="애니메이션">Animation</option>
             <option value="HT">Horror·Thriller</option>
             <option value="ROMANCE">Romance</option>
             <option value="SF">Sf·Fantasy</option>
