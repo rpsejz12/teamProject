@@ -2009,31 +2009,13 @@ ol {
 	}
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
 	.container {
-		max-width: 1170px;
+		max-width: 1199px;
 	}
 }
 
 /* Medium Device = 1200px */
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-	.hero {
-		overflow: hidden;
-	}
-	.login__form {
-		position: relative;
-		padding-left: 32px;
-	}
-	.login__social__links ul li a {
-		width: 380px;
-	}
-	.blog__item__text {
-		padding: 0 50px;
-	}
-}
-
-/* Tablet Device = 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.hero {

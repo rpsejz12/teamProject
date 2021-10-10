@@ -13,13 +13,15 @@
 		}
 	}
 	function Rdelete() {
-		return confirm("리뷰를 삭제하시겠습니까?");
+		if (confirm("리뷰를 작성하시겠습니까?") == true) {
+			document.review.submit();
+		} else {
+			return;
+		}
 	}
 </script>
 <script type="text/javascript">
-
-
-
+	
 </script>
 <head>
 <meta charset="UTF-8">
@@ -112,11 +114,11 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-3">
+					<div class="col-lg-4">
 						<div class="anime__details__pic set-bg"
 							data-setbg="${mdata.filename}"></div>
 					</div>
-					<div class="col-lg-9">
+					<div class="col-lg-8">
 						<div class="anime__details__text">
 							<div class="anime__details__title">
 								<h2 style="color: #FFFFFF; font-size: xxx-large;">${mdata.title}</h2>
@@ -132,28 +134,81 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="anime__details__form">
-						<div class="section-title">
-							<h5>Your Comment</h5>
+					<div class="col-lg-12 col-md-12">
+						<div class="anime__details__form">
+							<div class="section-title">
+								<h5>Your Comment</h5>
+							</div>
+							<c:choose>
+								<c:when test="${empty sessionID}">
+									<form action="login.jsp">
+										<textarea readonly placeholder="Please Log In"></textarea>
+										<button type="submit">
+											<i class="fa fa-location-arrow"></i> Log In
+										</button>
+									</form>
+								</c:when>
+								<c:otherwise>
+									<form action="Rinsert.do" method="post" name="review">
+										<input type="hidden" name="mpk" value="${mdata.mpk}">
+										<textarea name="cmt" placeholder="Your Comment"></textarea>
+										<button type="button" class="fa fa-location-arrow"
+											onclick="Rinsert()">Review</button>
+									</form>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						<c:choose>
-							<c:when test="${empty sessionID}">
-								<form action="login.jsp">
-									<textarea readonly placeholder="Please Log In"></textarea>
-									<button type="submit">
-										<i class="fa fa-location-arrow"></i> Log In
-									</button>
-								</form>
-							</c:when>
-							<c:otherwise>
-								<form action="Rinsert.do" method="post" name="review">
-									<input type="hidden" name="mpk" value="${mdata.mpk}">
-									<textarea name="cmt" placeholder="Your Comment"></textarea>
-									<button type="button" class="fa fa-location-arrow"
-										onclick="Rinsert()">Review</button>
-								</form>
-							</c:otherwise>
-						</c:choose>
+					</div>
+					<br>
+
+					<div class="col-lg-12 col-md-12">
+						<div class="anime__details__review">
+							<div class="section-title">
+								<h5>Reviews</h5>
+							</div>
+							<c:forEach var="v" items="${datas}">
+								<div class="anime__review__item">
+									<div class="anime__review__item__text">
+										<!-- 주석지우기 -->
+										<h6>${v.id}
+											- <span>${v.rdate}</span>&nbsp
+											<mytag:delete rpk="${v.rpk}" id="${v.id}" mpk="${v.mpk}" />
+										</h6>
+										<p style="overflow-wrap: break-word;">${v.cmt}</p>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+						<div class="product__pagination">
+							<a href="RselectAll.do?page=1&mpk=${mdata.mpk}"><i
+								class="fa fa-angle-double-left"></i></a>
+							<!-- 처음으로 -->
+							<c:if test="${paging.startPage != 1 }">
+								<a
+									href="RselectAll.do?page=${(page-1)-(page-1)%paging.perPagSet - paging.perPageSet + 1}&mpk=${mdata.mpk}"><i
+									class="fa fa-angle-left"></i></a>
+								<!-- 이전페이지 -->
+							</c:if>
+							<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
+								var="p">
+								<c:if test="${paging.curPage == p}">
+									<a href="RselectAll.do?page=${p}&mpk=${mdata.mpk}"
+										class="current-page">${p}</a>
+								</c:if>
+								<c:if test="${paging.curPage != p}">
+									<a href="RselectAll.do?page=${p}&mpk=${mdata.mpk}">${p}</a>
+								</c:if>
+							</c:forEach>
+							<c:if test="${paging.endPage != paging.lastPage}">
+								<a
+									href="RselectAll.do?page=${(page-1)-(page-1)%paging.perPageSet + paging.perPageSet + 1}&mpk=${mdata.mpk}"><i
+									class="fa fa-angle-right"></i></a>
+								<!-- 다음페이지 -->
+							</c:if>
+							<a href="RselectAll.do?page=${paging.lastPage}&mpk=${mdata.mpk}"><i
+								class="fa fa-angle-double-right"></i></a>
+							<!-- 마지막으로 -->
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4">
@@ -162,62 +217,13 @@
 							<h5>how about this movie ?</h5>
 						</div>
 						<div class="anime__details__pic set-bg"
-							data-setbg="${mrand.filename}">
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-8 col-md-8" style="margin-top:-200px">
-					<div class="anime__details__review">
-						<div class="section-title">
-							<h5>Reviews</h5>
-						</div>
-						<c:forEach var="v" items="${datas}">
-							<div class="anime__review__item">
-								<div class="anime__review__item__text">
-									<!-- 주석지우기 -->
-									<h6>${v.id}
-										- <span>${v.rdate}</span>&nbsp
-										<mytag:delete rpk="${v.rpk}" id="${v.id}" mpk="${v.mpk}" />
-									</h6>
-									<p style="overflow-wrap: break-word;">${v.cmt}</p>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
-					<div class="product__pagination">
-						<a href="RselectAll.do?page=1&mpk=${mdata.mpk}"><i
-							class="fa fa-angle-double-left"></i></a>
-						<!-- 처음으로 -->
-						<c:if test="${paging.startPage != 1 }">
-							<a
-								href="RselectAll.do?page=${(page-1)-(page-1)%paging.perPagSet - paging.perPageSet + 1}&mpk=${mdata.mpk}"><i
-								class="fa fa-angle-left"></i></a>
-							<!-- 이전페이지 -->
-						</c:if>
-						<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
-							var="p">
-							<c:if test="${paging.curPage == p}">
-								<a href="RselectAll.do?page=${p}&mpk=${mdata.mpk}"
-									class="current-page">${p}</a>
-							</c:if>
-							<c:if test="${paging.curPage != p}">
-								<a href="RselectAll.do?page=${p}&mpk=${mdata.mpk}">${p}</a>
-							</c:if>
-						</c:forEach>
-						<c:if test="${paging.endPage != paging.lastPage}">
-							<a
-								href="RselectAll.do?page=${(page-1)-(page-1)%paging.perPageSet + paging.perPageSet + 1}&mpk=${mdata.mpk}"><i
-								class="fa fa-angle-right"></i></a>
-							<!-- 다음페이지 -->
-						</c:if>
-						<a href="RselectAll.do?page=${paging.lastPage}&mpk=${mdata.mpk}"><i
-							class="fa fa-angle-double-right"></i></a>
-						<!-- 마지막으로 -->
+							data-setbg="${mrand.filename}"></div>
 					</div>
 				</div>
 			</div>
-			
-		
+
+
+
 		</div>
 	</section>
 	<!-- Anime Section End -->
