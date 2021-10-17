@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import common.page.PageVO;
@@ -12,17 +14,17 @@ import model.common.JNDI;
 
 
 public class MovieDAO {
-	String rdelete = "DELETE FROM REVIEW WHERE MPK = ?";										//리뷰 삭제 트랜잭션
+	String rdelete = "delete from review where mpk = ?";										//리뷰 삭제 트랜잭션
 
-	String count = "SELECT COUNT(*) FROM MOVIE";
-	String selectRand = "SELECT * FROM MOVIE";
+	String count = "select count(*) from movie";
+	String selectRand = "select * from movie";
 
-	String selectAllm = "SELECT * FROM MOVIE ORDER BY RATINGAVG DESC LIMIT ?, ?";			//영화 전체 리스트
-	String selectAll = "SELECT * FROM MOVIE ORDER BY TITLE ASC LIMIT ?, ?";			//영화 전체 리스트
+	String selectAllm = "select * from movie order by ratingavg desc limit ?, ?";			//영화 전체 리스트
+	String selectAll = "select * from movie order by title asc limit ?, ?";			//영화 전체 리스트
 	//SELECT * FROM MOVIE WHERE MTYPE = ? ORDER BY TITLE ASC LIMIT ?, ?
-	String selectAllT = "SELECT * FROM MOVIE WHERE MTYPE = ? ORDER BY TITLE ASC LIMIT ?, ?";
-	String selectAllSearch = "SELECT * FROM MOVIE WHERE TITLE LIKE ? ORDER BY TITLE ASC LIMIT ?, ?";
-	String selectAllSearchT = "SELECT * FROM MOVIE WHERE MTYPE = ? AND TITLE LIKE ? ORDER BY TITLE ASC LIMIT ?, ?";
+	String selectAllT = "select * from movie where mtype = ? order by title asc limit ?, ?";
+	String selectAllSearch = "select * from movie where title like ? order by title asc limit ?, ?";
+	String selectAllSearchT = "select * from movie where mtype = ? and title like ? order by title asc limit ?, ?";
 
 	//select 설명
 	//order by와 rownum이 순서가 필요하여 () 사용
@@ -33,20 +35,24 @@ public class MovieDAO {
 	//(select A.* , rownum as rnum from () A where rownum < ?) -> rownum을 rnum에 임시 저장 A, rownum < ? 인 리스트 저장
 	//select * from () where rnum >= ? 인 리스트 저장
 
-	String mpk = "SELECT MPK FROM MOVIE";									//영화 전체 리스트
-	String selectOne = "SELECT * FROM MOVIE WHERE MPK = ?";					//영화 클릭
-	String insert = "INSERT INTO MOVIE(MPK, TITLE, CONTENT, MTYPE,MDATE,FILENAME) VALUES (?,?,?,?,DATE_FORMAT(?,'%Y-%m-%d'),?)";				//영화 등록
-	String delete = "DELETE FROM MOVIE WHERE MPK = ?";						//영화 삭제
-	String update = "UPDATE MOVIE SET TITLE  = ?, CONTENT = ?, MTYPE = ?, MDATE = DATE_FORMAT(?,'%Y-%m-%d'), FILENAME = ?  WHERE MPK = ?";				//영화 수정
+	String mpk = "select mpk from movie";									//영화 전체 리스트
+	String selectOne = "select * from movie where mpk = ?";					//영화 클릭
+	String insert = "insert into movie(mpk, title, content, mtype,mdate,filename) values (?,?,?,?,date_format(?,'%Y-%m-%d'),?)";				//영화 등록
+	String delete = "delete from movie where mpk = ?";						//영화 삭제
+	String update = "update movie set title  = ?, content = ?, mtype = ?, mdate = date_format(?,'%Y-%m-%d'), filename = ?  where mpk = ?";				//영화 수정
 
 	String isHttp = null;		//http가 아닐경우 img/를 붙일 String
 	Boolean isMpk = false;		//장르가 mpkSet에 저장되었는지 확인
-	String [][] mpkSet= {		//유지보수를 위해  mpkSet 선언
-			{"액션","애니메이션","멜로/로멘스","드라마","다큐멘터리"},
-			{"AC","AN","RO","DR","DC"}		
-	};
 
-
+	HashMap<String, String> mpkMap = new HashMap<String, String>(){{
+		   put("액션", "AC");
+		   put("애니메이션", "AN");
+		   put("멜로/로맨스", "RO");
+		   put("드라마", "DR");
+		   put("다큐멘터리", "DC");
+	}};
+	
+	
 	MovieVO data = null;
 	ArrayList<MovieVO> datas = null;
 	Connection conn=null;
@@ -277,42 +283,32 @@ public class MovieDAO {
 			pstmt = conn.prepareStatement(mpk);
 			rs = pstmt.executeQuery();
 
-			String mpkStr = null;   //   mpk 받
-			String mpkType = null;   //  'AC'1001  mpk 앞에 들어갈 글자 
-
+			String mpkStr = null;      
+			String mpkType = null;  //  'AC'1001  mpk 앞에 들어갈 글자 
 
 			int mpkInt = 0;         //   mpk를 증가시키기위해 int로 변환하고 저장할 변수
 			int max = 0;
-			int cnt = 0;         //   증가시킬 mpk가 있는지 확인하는 변수
+			boolean isNew = true;   //   증가시킬 mpk가 있는지 확인하는 변수
 
 			while(rs.next()) {
-
 				mpkStr = rs.getString("mpk").substring(2);      //mpk type 제거후 뒷부분만 가져옴
 				mpkInt = Integer.parseInt(mpkStr);            //인트로 변환
 				if(mpkInt > max){
 					max = mpkInt;
-				}                              //1 증가
-				cnt++;                        //cnt증가 
+				}
+				isNew = false; 
 			}
 
-			if(cnt == 0) {            //rs 가 null 일경우
+			if(isNew) {            		//rs 가 null 일경우
 				mpkInt = 1001;         //mpk를 1001로 저장
 			}
 
-
-			for(int i = 0 ; i < mpkSet[0].length; i++) {   
-				if(vo.getMtype().equals(mpkSet[0][i])) {      //장르가 mpkSet에 저장되있는 데이터와 같을 경우
-					mpkType = mpkSet[1][i];                  
-					isMpk = true;
-				}            
+			if(mpkMap.containsKey(vo.getMtype())) {
+				mpkType = mpkMap.get(vo.getMtype());
+			}else {
+				mpkType = "EX";
+				vo.setMtype("ETC");
 			}
-
-
-			if(!isMpk) {                              //장르가 mpkSet에 저장되지 않았을 경우
-				mpkType = "EX";                           
-				vo.setMtype("ETC");                        //vo에 ETC로 저장
-			}
-
 			max++;         
 			mpkStr = mpkType + max;                     // AC + 1001
 			vo.setMpk(mpkStr);                           // mpkStr을 mpk로 set         

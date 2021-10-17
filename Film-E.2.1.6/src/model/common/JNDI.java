@@ -8,20 +8,20 @@ import javax.sql.DataSource;
 
 public class JNDI {
 	public static Connection connect() {
-		
+
 		Connection conn=null;
-		
+
 		try{
 			Context initContext = new InitialContext();
 			Context envContext=(Context)initContext.lookup("java:/comp/env");
-			DataSource ds=(DataSource)envContext.lookup("jdbc/mysql"); 
+			DataSource ds=(DataSource)envContext.lookup("jdbc/cafe24"); 
 			conn=ds.getConnection();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return conn;
 	}
-	
+
 	public static void disconnect(PreparedStatement pstmt,Connection conn) {
 		try{
 			pstmt.close();

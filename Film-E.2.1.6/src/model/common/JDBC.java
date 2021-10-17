@@ -14,9 +14,9 @@ public class JDBC {
 		
 		String DName = "com.mysql.cj.jdbc.Driver";  // JDBC의 드라이버 클래스명
 		
-		String url = "jdbc:mysql://localhost:3306/ohdb";
-		String user="root";
-		String password="6829";
+		String url = "jdbc:mysql://******/****";
+		String user="*****";
+		String password="*******";
 		
 		try {
 			Class.forName(DName);

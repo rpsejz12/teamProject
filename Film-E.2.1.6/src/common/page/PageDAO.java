@@ -12,11 +12,11 @@ public class PageDAO {
 
 
 	//전체 리스트의 총 개수를 가져오는 sql
-	String selectAllR = "SELECT COUNT(*) FROM REVIEW WHERE MPK = ?";			//리뷰 전체 리스트
-	String selectAll = "SELECT COUNT(*) FROM MOVIE";							//영화 전체 리스트
-	String selectAllT = "SELECT COUNT(*) FROM MOVIE WHERE MTYPE = ?";			//영화 장르 선택 리스트
-	String selectAllSearch = "SELECT COUNT(*) FROM MOVIE WHERE TITLE LIKE ?";	//영화 검색시 전체 리스트
-	String selectAllSearchT = "SELECT COUNT(*) FROM MOVIE WHERE MTYPE = ? AND TITLE LIKE ?";	//영화 장르 선택&검색 리스트 
+	String selectAllR = "select count(*) from review where mpk = ?";			//리뷰 전체 리스트
+	String selectAll = "select count(*) from movie";							//영화 전체 리스트
+	String selectAllT = "select count(*) from movie where mtype = ?";			//영화 장르 선택 리스트
+	String selectAllSearch = "select count(*) from movie where title like ?";	//영화 검색시 전체 리스트
+	String selectAllSearchT = "select count(*) from movie where mtype = ? and title like ?";	//영화 장르 선택&검색 리스트 
 
 	PageVO data = null;
 

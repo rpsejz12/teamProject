@@ -108,7 +108,7 @@ public class Movie {
             System.out.println();
             
             // insert into movie2 values (mpk, 'title', 'summary', 'genre', to_date('2021/09/29', 'YYYY/MM/DD'), 'Æ÷½ºÅÍURL');
-            String sql = "INSERT INTO MOVIE (mpk, title, content, mtype, mdate, filename) VALUES (?,?,?,?,?,?)";
+            String sql = "insert into movie (mpk, title, content, mtype, mdate, filename) values (?,?,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, mpk);
             pstmt.setString(2, title);

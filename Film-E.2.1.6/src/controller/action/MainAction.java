@@ -34,6 +34,8 @@ public class MainAction implements Action {
 		String mtype = request.getParameter("mtype");
 		String search = request.getParameter("search");
 		
+		
+		
 		pVO = pDAO.paging(pVO, null ,mtype,search,"movie");
 		request.setAttribute("datas", mDAO.m_selectDB_all_m(pVO));
 		request.setAttribute("paging", pVO);
