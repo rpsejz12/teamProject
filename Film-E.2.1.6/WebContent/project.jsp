@@ -14,6 +14,7 @@
 	}
 </script>
 <head>
+<meta name="naver-site-verification" content="07e267492e17e9e2ec83e71588f1108e89250462" />
 <meta charset="UTF-8">
 <meta name="description" content="Anime Template">
 <meta name="keywords" content="Anime, unica, creative, html">
@@ -88,16 +89,22 @@
             <div class="col-lg-8">
                <div class="blog__details__content">
                   <div class="blog__details__text">
-                     <p class="project" style="opacity: 0;height:0">
-                        ▸&nbsp;코로나가 장기화되며, OTT 플랫폼 서비스도 점차 늘어날 것으로 예상. <br>
-                        &nbsp;&nbsp;&nbsp; → 다양한 영화 정보를 얻기 위한 사용자들의 니즈가 늘어나게 될 것으로 예측
+                      <p class="project" style="opacity: 0;height:0">
+                        ▸&nbsp;With Corona로 전환을 앞두고, 영화관을 찾는 고객의 증가가 예상. <br>
+                        &nbsp;&nbsp;&nbsp;→ 다양한 영화 정보를 얻기 위한 사용자들의 니즈가 늘어나게 될 것으로 예측 <br>
+                        &nbsp;&nbsp;&nbsp;→ 영화에 관한 다양한 시각들을 공유
                      </p>
-                     <br>
                      <p class="project" style="opacity: 0;height:0">
                         ▸&nbsp;해외에는 로튼토마토, IMDB 같은 영화 리뷰를 보여주는 전문적인 사이트가 존재. <br>
                         &nbsp;&nbsp;&nbsp;→ 국내 : 전문 영화 리뷰 플랫폼의 부재 <br>
+                        &nbsp;&nbsp;&nbsp;→ 해외 : 언어적인 문제와 대한민국 정서에 특화된 디자인 구현 가능 <br>
                         &nbsp;&nbsp;&nbsp;→ Film-E (영화리뷰) 프로그램 기획
                      </p>
+                     <p class="project" style="opacity: 0;height:0">
+                        ▸&nbsp;기생충, 미나리, 오징어게임 등 전세계적으로  OTT 플랫폼 서비스를 통한 K영화,드라마에 대한<br>&nbsp;&nbsp;&nbsp; 해외의 관심 증가.<br>
+                        &nbsp;&nbsp;&nbsp;→ K문화의 전문적인 사이트로서 발전 가능성
+                     </p>
+                     <br>
                   </div>
 
 

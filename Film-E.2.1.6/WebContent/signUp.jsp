@@ -168,6 +168,7 @@ function logout(){
    }
 </script>
 <head>
+<meta name="naver-site-verification" content="07e267492e17e9e2ec83e71588f1108e89250462" />
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
     <meta name="keywords" content="Anime, unica, creative, html">
